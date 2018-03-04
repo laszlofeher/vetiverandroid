@@ -1,5 +1,7 @@
 package com.example.lenovo.myapplication;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -28,7 +30,7 @@ import java.util.Iterator;
 import javax.net.ssl.HttpsURLConnection;
 
 public class MainActivity extends AppCompatActivity {
-
+    private String jsonString = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +46,9 @@ public class MainActivity extends AppCompatActivity {
                 EditText searchText = (EditText)findViewById(R.id.searctText);
             //    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
             //            .setAction("Action", null).show();
-                new SendPostRequest().execute(searchText.getText().toString());
+                new SendPostRequest(getApplicationContext()).execute(searchText.getText().toString());
+
+
             }
         });
     }
@@ -76,6 +80,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     public class SendPostRequest extends AsyncTask<String, Void, String> {
+        Context context;
+
+        public SendPostRequest(Context context) {
+            super();
+            this.context = context.getApplicationContext();
+        }
 
         protected void onPreExecute(){}
 
@@ -83,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
             try {
 
-                URL url = new URL("http://vetiverproject.eu/repository/search"); // here is your URL path
+                URL url = new URL("http://citywander.website/vetiver/index.php"); // here is your URL path
 
                 JSONObject postDataParams = new JSONObject();
                 postDataParams.put("words", arg0[0]);
@@ -135,13 +145,14 @@ public class MainActivity extends AppCompatActivity {
             catch(Exception e){
                 return new String("Exception: " + e.getMessage());
             }
-
         }
 
         @Override
         protected void onPostExecute(String result) {
-            Toast.makeText(getApplicationContext(), result,
-                    Toast.LENGTH_LONG).show();
+            super.onPostExecute(result);
+            Intent intent = new Intent(context, ResultList.class);
+            intent.putExtra("data", result);
+            context.startActivity(intent);
         }
     }
 
@@ -169,11 +180,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return result.toString();
     }
-
-
-
-
-
-
 
 }
