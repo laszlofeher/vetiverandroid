@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:orientation="vertical"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+    <LinearLayout
+        android:id="@+id/infoSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <TextView
         android:id="@+id/title"
@@ -22,25 +29,58 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:layout_weight="0.06" />
+    </LinearLayout>
 
-    <RatingBar
-        android:id="@+id/overallrating"
+    <RelativeLayout
+        android:id="@+id/pricingSection"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/infoSection"
+        android:orientation="vertical">
 
-    <RatingBar
-        android:id="@+id/vetcurriculum"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <RatingBar
+            android:id="@+id/overallrating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="0"
 
-    <RatingBar
-        android:id="@+id/userfriendly"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            android:stepSize="1"
+            style="?android:attr/ratingBarStyleSmall"
+            />
 
-    <RatingBar
-        android:id="@+id/classcapacity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <RatingBar
+            android:id="@+id/vetcurriculum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="0"
+            android:stepSize="1"
+            android:layout_below="@id/overallrating"
+            style="?android:attr/ratingBarStyleSmall"
+            />
 
-</LinearLayout>
+        <RatingBar
+            android:id="@+id/userfriendly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vetcurriculum"
+            android:numStars="5"
+            android:rating="0"
+            android:stepSize="1"
+            style="?android:attr/ratingBarStyleSmall"
+            />
+
+        <RatingBar
+            android:id="@+id/classcapacity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="0"
+            android:stepSize="1"
+            android:layout_below="@+id/userfriendly"
+            style="?android:attr/ratingBarStyleSmall"
+
+            />
+        </RelativeLayout>
+</RelativeLayout>

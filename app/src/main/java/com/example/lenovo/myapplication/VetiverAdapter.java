@@ -45,10 +45,10 @@ public class VetiverAdapter extends ArrayAdapter<Item> {
         author.setText(itemsArrayList.get(position).getAuthor());
         description.setText(itemsArrayList.get(position).getDescription());
 
-        overallrating.setNumStars(itemsArrayList.get(position).getOverallrating());
-        vetcurriculum.setNumStars(itemsArrayList.get(position).getVetcurriculum());
-        userfriendly.setNumStars(itemsArrayList.get(position).getUserfriendly());
-        classcapacity.setNumStars(itemsArrayList.get(position).getClasscapacity());
+        overallrating.setRating(itemsArrayList.get(position).getOverallrating());
+        vetcurriculum.setRating(itemsArrayList.get(position).getVetcurriculum());
+        userfriendly.setRating(itemsArrayList.get(position).getUserfriendly());
+        classcapacity.setRating(itemsArrayList.get(position).getClasscapacity());
         return rowView;
     }
 }

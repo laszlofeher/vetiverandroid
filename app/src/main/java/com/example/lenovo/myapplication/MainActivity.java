@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -28,6 +29,8 @@ import java.net.URLEncoder;
 import java.util.Iterator;
 
 import javax.net.ssl.HttpsURLConnection;
+
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 public class MainActivity extends AppCompatActivity {
     private String jsonString = "";
@@ -51,6 +54,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+/*
+        Button button = (Button)findViewById(R.id.advencedSearch);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                Intent intent = new Intent(getApplicationContext(), AdvencedSearch.class);
+                getApplicationContext().startActivity(intent);
+
+            }
+        });
+        */
     }
 
     @Override
@@ -151,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             Intent intent = new Intent(context, ResultList.class);
+            intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
             intent.putExtra("data", result);
             context.startActivity(intent);
         }

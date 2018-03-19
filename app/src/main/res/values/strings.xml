@@ -2,4 +2,27 @@
     <string name="app_name">My Application</string>
     <string name="action_settings">Settings</string>
     <string name="please_type_the_search_text">Please type the search text</string>
+    <string name="title_activity_advenced_search">AdvencedSearch</string>
+
+    <string-array name="resources_arrays">
+        <item>Resources</item>
+        <item>Publications</item>
+        <item>On-line Course or Seminar</item>
+        <item>Tools or Social Media</item>
+        <item>Template</item>
+        <item>Teaching Sequences</item>
+    </string-array>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </resources>
